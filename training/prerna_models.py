@@ -5,11 +5,11 @@ from sklearn.model_selection import train_test_split
 
 # Import necessary items from Keras
 from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Activation, Dropout, UpSampling2D, ELU
+from tensorflow.keras.layers import Dropout, UpSampling2D, ELU
 from tensorflow.keras.layers import Conv2DTranspose, Conv2D, MaxPooling2D
 from tensorflow.keras.layers import BatchNormalization
 from keras.preprocessing.image import ImageDataGenerator
-from tensorflow.keras import regularizers
+
 
 def create_model(input_shape, pool_size):
     # Create the actual neural network here
@@ -19,7 +19,7 @@ def create_model(input_shape, pool_size):
 
     # Below layers were re-named for easier reading of model summary; this not necessary
     # Conv Layer 1
-    model.add(Conv2D(16, (3, 3), padding='valid', strides=(1,1), activation=None, name = 'Conv1'))
+    model.add(Conv2D(16, (3, 3), padding='valid', strides=(1, 1), activation=None, name='Conv1'))
 
     # Adding batch normalization before applying non-linear activation function
     model.add(BatchNormalization())
@@ -35,7 +35,7 @@ def create_model(input_shape, pool_size):
     """
 
     # Conv Layer 2
-    model.add(Conv2D(32, (3, 3), padding='valid', strides=(1,1), activation = None, name = 'Conv2'))
+    model.add(Conv2D(32, (3, 3), padding='valid', strides=(1, 1), activation=None, name='Conv2'))
 
     # Adding batch normalization before applying non-linear activation function
     model.add(BatchNormalization())
@@ -50,7 +50,7 @@ def create_model(input_shape, pool_size):
     model.add(MaxPooling2D(pool_size=pool_size))
 
     # Conv Layer 3
-    model.add(Conv2D(32, (3, 3), padding='valid', strides=(1,1), activation = None, name = 'Conv3'))
+    model.add(Conv2D(32, (3, 3), padding='valid', strides=(1, 1), activation=None, name='Conv3'))
 
     # Adding batch normalization before applying non-linear activation function
     model.add(BatchNormalization())
@@ -62,7 +62,7 @@ def create_model(input_shape, pool_size):
     # Dropout should be applied after batch normalization and non-linear activation
 
     # Conv Layer 4
-    model.add(Conv2D(64, (3, 3), padding='valid', strides=(1,1), activation = None, name = 'Conv4'))
+    model.add(Conv2D(64, (3, 3), padding='valid', strides=(1, 1), activation=None, name='Conv4'))
 
     # Adding batch normalization before applying non-linear activation function
     model.add(BatchNormalization())
@@ -73,7 +73,7 @@ def create_model(input_shape, pool_size):
     model.add(Dropout(0.2))
 
     # Conv Layer 5
-    model.add(Conv2D(64, (3, 3), padding='valid', strides=(1,1), activation = None, name = 'Conv5'))
+    model.add(Conv2D(64, (3, 3), padding='valid', strides=(1, 1), activation=None, name='Conv5'))
 
     # Adding batch normalization before applying non-linear activation function
     model.add(BatchNormalization())
@@ -87,23 +87,23 @@ def create_model(input_shape, pool_size):
     model.add(MaxPooling2D(pool_size=pool_size))
 
     # Conv Layer 6
-    model.add(Conv2D(128, (3, 3), padding='valid', strides=(1,1), activation = None, name = 'Conv6'))
+    model.add(Conv2D(128, (3, 3), padding='valid', strides=(1, 1), activation=None, name='Conv6'))
 
     # Adding batch normalization before applying non-linear activation function
     model.add(BatchNormalization())
 
-    # Using elu non-linearity since it can produce negative activations and it smoothes slowly
+    # Using elu non-linearity since it can produce negative activations, and it smoothes slowly
     model.add(ELU(alpha=1.0))
 
     model.add(Dropout(0.2))
 
     # Conv Layer 7
-    model.add(Conv2D(128, (3, 3), padding='valid', strides=(1,1), activation = None, name = 'Conv7'))
+    model.add(Conv2D(128, (3, 3), padding='valid', strides=(1, 1), activation=None, name='Conv7'))
 
     # Adding batch normalization before applying non-linear activation function
     model.add(BatchNormalization())
 
-    # Using elu non-linearity since it can produce negative activations and it smoothes slowly
+    # Using elu non-linearity since it can produce negative activations, and it smoothes slowly
     model.add(ELU(alpha=1.0))
 
     model.add(Dropout(0.2))
@@ -115,7 +115,7 @@ def create_model(input_shape, pool_size):
     model.add(UpSampling2D(size=pool_size))
 
     # Deconv 1
-    model.add(Conv2DTranspose(64, (3, 3), padding='valid', strides=(1,1), activation = None, name = 'Deconv1'))
+    model.add(Conv2DTranspose(64, (3, 3), padding='valid', strides=(1, 1), activation=None, name='Deconv1'))
 
     # Adding batch normalization before applying non-linear activation function
     model.add(BatchNormalization())
@@ -126,7 +126,7 @@ def create_model(input_shape, pool_size):
     model.add(Dropout(0.2))
 
     # Deconv 2
-    model.add(Conv2DTranspose(64, (3, 3), padding='valid', strides=(1,1), activation = None, name = 'Deconv2'))
+    model.add(Conv2DTranspose(64, (3, 3), padding='valid', strides=(1, 1), activation=None, name='Deconv2'))
 
     # Adding batch normalization before applying non-linear activation function
     model.add(BatchNormalization())
@@ -140,7 +140,7 @@ def create_model(input_shape, pool_size):
     model.add(UpSampling2D(size=pool_size))
 
     # Deconv 3
-    model.add(Conv2DTranspose(32, (3, 3), padding='valid', strides=(1,1), activation = None, name = 'Deconv3'))
+    model.add(Conv2DTranspose(32, (3, 3), padding='valid', strides=(1, 1), activation=None, name='Deconv3'))
 
     # Adding batch normalization before applying non-linear activation function
     model.add(BatchNormalization())
@@ -151,7 +151,7 @@ def create_model(input_shape, pool_size):
     model.add(Dropout(0.2))
 
     # Deconv 4
-    model.add(Conv2DTranspose(32, (3, 3), padding='valid', strides=(1,1), activation = None, name = 'Deconv4'))
+    model.add(Conv2DTranspose(32, (3, 3), padding='valid', strides=(1, 1), activation=None, name='Deconv4'))
 
     # Adding batch normalization before applying non-linear activation function
     model.add(BatchNormalization())
@@ -162,7 +162,7 @@ def create_model(input_shape, pool_size):
     model.add(Dropout(0.2))
 
     # Deconv 5
-    model.add(Conv2DTranspose(16, (3, 3), padding='valid', strides=(1,1), activation = None, name = 'Deconv5'))
+    model.add(Conv2DTranspose(16, (3, 3), padding='valid', strides=(1, 1), activation=None, name='Deconv5'))
 
     # Adding batch normalization before applying non-linear activation function
     model.add(BatchNormalization())
@@ -176,7 +176,7 @@ def create_model(input_shape, pool_size):
     model.add(UpSampling2D(size=pool_size))
 
     # Deconv 6
-    model.add(Conv2DTranspose(16, (3, 3), padding='valid', strides=(1,1), activation = None, name = 'Deconv6'))
+    model.add(Conv2DTranspose(16, (3, 3), padding='valid', strides=(1, 1), activation=None, name='Deconv6'))
 
     # Adding batch normalization before applying non-linear activation function
     model.add(BatchNormalization())
@@ -184,22 +184,22 @@ def create_model(input_shape, pool_size):
     # Using elu non-linearity since it can produce negative activations and it smoothes slowly
     model.add(ELU(alpha=1.0))
 
-
     # Final layer - only including one channel so 1 filter
-    model.add(Conv2DTranspose(1, (3, 3), padding='valid', strides=(1,1), activation = 'sigmoid', name = 'Final'))
+    model.add(Conv2DTranspose(1, (3, 3), padding='valid', strides=(1, 1), activation='sigmoid', name='Final'))
     # Using sigmoid for the final layer since the labels are between 0 and 1, which means our output activation
     # should also be in this range
 
     return model
 
+
 def main():
     # Load training images
-    # train_images = pickle.load(open("/Users/divyamsobti10/Desktop/258/project/full_CNN_labels.p", "rb" ))
-    train_images = pickle.load(open("C:\\Users\\prern\\Documents\\GitHub\\CMPE258_Project\\data\\full_CNN_train.p", "rb" ))
+    train_images = pickle.load(
+        open("C:\\Users\\prern\\Documents\\GitHub\\CMPE258_Project\\data\\full_CNN_train.p", "rb")
+        )
 
     # Load image labels
-    # labels = pickle.load(open("/Users/divyamsobti10/Desktop/258/project/full_CNN_labels.p", "rb" ))
-    labels = pickle.load(open("C:\\Users\\prern\\Documents\\GitHub\\CMPE258_Project\\data\\full_CNN_labels.p", "rb" ))
+    labels = pickle.load(open("C:\\Users\\prern\\Documents\\GitHub\\CMPE258_Project\\data\\full_CNN_labels.p", "rb"))
 
     # Make into arrays as the neural network wants these
     train_images = np.array(train_images)
@@ -229,8 +229,10 @@ def main():
 
     # Compiling and training the model
     model.compile(optimizer='Adam', loss='mean_squared_error')
-    model.fit_generator(datagen.flow(X_train, y_train, batch_size=batch_size), steps_per_epoch=len(X_train)/batch_size,
-    epochs=epochs, verbose=1, validation_data=(X_val, y_val))
+    model.fit_generator(
+        datagen.flow(X_train, y_train, batch_size=batch_size), steps_per_epoch=len(X_train) / batch_size,
+        epochs=epochs, verbose=1, validation_data=(X_val, y_val)
+        )
 
     # Freeze layers since training is done
     model.trainable = False
@@ -241,6 +243,7 @@ def main():
 
     # Show summary of model
     model.summary()
+
 
 if __name__ == '__main__':
     main()
