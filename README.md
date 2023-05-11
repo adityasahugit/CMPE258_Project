@@ -12,11 +12,24 @@ Shashank Sharma
 
 # How to run the project
 
+#### Requirements
+
+Tensorflow 2.10.0 <br>
+Python 3.7.16 <br>
+opencv 4.6.0 <br>
+numpy 1.21.5 <br>
+keras 2.10.0 <br>
+scikit-learn 1.0.2 <br>
+
+All other requirements are mentioned in requirements.txt file
+
 #### Project Code Files Description:
 
 In order to train the model, we have developed the code file “train_NN.py”. This file is responsible for training the model which is under the ‘training’ folder.
 
 In order to run the model, we have developed the code file “detected_lanes_main.py”. This file takes input as a video file path and performs Lane Detection.
+
+
 
 
 #### Steps for training the Model:- 
