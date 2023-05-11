@@ -10,9 +10,6 @@ Prerna Shekar Bharadwaj <br>
 Shashank Sharma
 
 
-Dataset drive link: https://drive.google.com/drive/u/0/folders/1DlATz2oC-ui72HN66YDtkUvORjlDgL3f
-
-
 # How to run the project
 
 #### Project Code Files Description:
