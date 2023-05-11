@@ -239,7 +239,7 @@ def main():
     model.compile(optimizer='Adam', loss='mean_squared_error')
 
     # Save model architecture and weights
-    model.save('full_CNN_model.h5')
+    model.save('CNN_model_ELU_all_batch_norm.h5')
 
     # Show summary of model
     model.summary()
