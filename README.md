@@ -1,4 +1,4 @@
-# CMPE258_Project
+# Lane Detection using Deep Learning
 Group project for Deep Learning Class- CMPE 258
 
 
@@ -12,7 +12,7 @@ Shashank Sharma
 
 # How to run the project
 
-#### Requirements
+#### Library Requirements
 
 Tensorflow 2.10.0 <br>
 Python 3.7.16 <br>
