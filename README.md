@@ -49,7 +49,7 @@ iii) Once the code runs, the model is saved as a CNN_model.h5 file. This model i
 i) For executing the program, pass “video_path” as parameter during running the program using the following command:-
 
 ```
-python  detected_lanes_main.py –input video_path 
+python  detected_lanes_main.py --input video_path 
 ```
 
 ii) Once the program is run, the file is saved as Output1.mp4
