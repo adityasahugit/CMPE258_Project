@@ -1,5 +1,8 @@
 import numpy as np
 import cv2
+import sys
+import os
+import argparse
 from moviepy.editor import VideoFileClip
 from IPython.display import HTML
 from keras.models import load_model
@@ -44,15 +47,24 @@ def road_lines_fn(image):
 
 
 if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description='Lane detection program')
+    parser.add_argument('--input', type=str, required=True, help='Path to input image')
+
+    args = parser.parse_args()
+    video_path = args.input
+
+    if not os.path.exists(video_path):
+        print(f"Error: The file '{video_path}' does not exist.")
+        sys.exit(1)
+    clip1 = VideoFileClip(video_path)
+
     # Load Keras model
-    model = load_model('full_CNN_model_v2.h5')
+    model = load_model('saved_models/best_model.h5')
     # Create lanes object
     lanes = Lanes()
 
     # Where to save the output video
-    vid_output = 'output1_v2.mp4'
-    # Location of the input video
-    clip1 = VideoFileClip("input_video1.mp4")
+    vid_output = 'new_output.mp4'
     # Create the clip
     vid_clip = clip1.fl_image(road_lines_fn)
     vid_clip.write_videofile(vid_output, audio=False)
