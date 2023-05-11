@@ -21,7 +21,7 @@ numpy 1.21.5 <br>
 keras 2.10.0 <br>
 scikit-learn 1.0.2 <br>
 
-All other requirements are mentioned in requirements.txt file
+All other requirements are mentioned in [requirements.txt](https://github.com/adityasahugit/CMPE258_Project/blob/main/requirements.txt) file
 
 #### Project Code Files Description:
 
