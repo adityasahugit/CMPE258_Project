@@ -137,7 +137,7 @@ def main():
     model.compile(optimizer='Adam', loss='mean_squared_error')
 
     # Save model architecture and weights
-    model.save('full_CNN_model_version2.h5')
+    model.save('best_model.h5')
 
     # Show summary of model
     model.summary()
